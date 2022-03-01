@@ -209,8 +209,22 @@ def homepage(request):
     return render(request, "accounts/homepage.html", {"name": "John"})
 
 
+# from src.test_handwritting import processImage
+
+from test_handwritting import processImage
+
+from PIL import Image
+import numpy as np
+
+
 def predictImage(request):
     fileObj = request.FILES["image"]
-    fs = FileSystemStorage()
-    fs.save(fileObj.name, fileObj)
-    return render(request, "accounts/homepage.html", {"name": "John"})
+    pil_img = Image.open(fileObj)
+    cv_img = np.array(pil_img)
+    txt = processImage(cv_img)
+    # im_pil = Image.fromarray(txt)
+    print("success")
+    print(txt)
+    # fs = FileSystemStorage()
+    # fs.save(fileObj.name, fileObj)
+    return render(request, "accounts/homepage.html", {"name": "John", "txt": txt})
