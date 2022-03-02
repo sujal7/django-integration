@@ -217,14 +217,11 @@ from PIL import Image
 import numpy as np
 
 
+@login_required(login_url="login")
 def predictImage(request):
     fileObj = request.FILES["image"]
     pil_img = Image.open(fileObj)
     cv_img = np.array(pil_img)
     txt = processImage(cv_img)
-    # im_pil = Image.fromarray(txt)
-    print("success")
-    print(txt)
-    # fs = FileSystemStorage()
-    # fs.save(fileObj.name, fileObj)
-    return render(request, "accounts/homepage.html", {"name": "John", "txt": txt})
+    # print(txt)
+    return render(request, "accounts/predictImage.html", {"name": "John", "txt": txt})

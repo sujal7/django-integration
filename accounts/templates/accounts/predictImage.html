@@ -1,0 +1,20 @@
+{% extends 'accounts/main.html' %} {% block content %}
+
+<style>
+  .try-again {
+    position: absolute;
+    top: 300px;
+    left: 450px;
+    font-size: 20px;
+  }
+</style>
+<h2>Your extracted text is:</h2>
+<textarea rows="10" cols="50">{{txt}}</textarea>
+<br /><br />
+<img src="../../../static/images/image.jpg" alt="output" />
+
+<a href="http://localhost:8000/user/" class="try-again"
+  >Try with Another Image?</a
+>
+
+{% endblock content %}

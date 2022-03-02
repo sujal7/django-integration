@@ -15,5 +15,5 @@ urlpatterns = [
     path("update_order/<str:pk>/", views.updateOrder, name="update_order"),
     path("delete_order/<str:pk>/", views.deleteOrder, name="delete_order"),
     path("homepage/", views.homepage, name="homepage"),
-    path("predictImage/", views.predictImage, name="predictImage"),
+    path("user/predictImage", views.predictImage, name="predictImage"),
 ]

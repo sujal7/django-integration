@@ -110,11 +110,11 @@ def processImage(image):
         cv2.putText(
             blank_image,
             label,
-            (x + 10, y + 10),
+            (x + 10, y + 50),
             cv2.FONT_HERSHEY_SIMPLEX,
-            2,
-            (0, 0, 0),
             3,
+            (0, 0, 0),
+            5,
         )
 
     cv2.imwrite("blankImage.jpg", blank_image)
