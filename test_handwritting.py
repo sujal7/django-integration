@@ -111,7 +111,7 @@ def processImage(image):
             label,
             (x + 10, y + 50),
             cv2.FONT_HERSHEY_SIMPLEX,
-            3,
+            1.2,
             (0, 0, 0),
             5,
         )
