@@ -6,7 +6,6 @@ from tensorflow.keras.models import load_model
 import pytesseract as pt
 import os
 from PIL import Image
-from django.core.files.storage import FileSystemStorage
 
 
 # Get input image from user and process it
@@ -121,7 +120,10 @@ def processImage(image):
 
     pt.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
     img_object = Image.open(r"blankImage.jpg")
-    img_text = pt.image_to_string(img_object, lang="eng")
+    custom_config = (
+        "-c tessedit_char_whitelist=0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ --psm 6"
+    )
+    img_text = pt.image_to_string(img_object, lang="eng", config=custom_config)
 
     path = "E:\Code Playground\django-integration\static\images"
     # show the image
