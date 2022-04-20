@@ -9,12 +9,28 @@
   }
 </style>
 <h2>Your extracted text is:</h2>
-<textarea rows="10" cols="50">{{txt}}</textarea>
+<textarea rows="10" cols="50" id="output">{{txt}}</textarea>
+<br />
+<button onclick="copyText()" class="btn btn-primary">Copy</button>
 <br /><br />
 <img src="../../../static/images/image.jpg" alt="output" />
 
 <a href="http://localhost:8000/user/" class="try-again"
   >Try with Another Image?</a
 >
+
+<script>
+  function copyText() {
+    /* Get the text field */
+    var copyText = document.getElementById('output');
+
+    /* Select the text field */
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); /* For mobile devices */
+
+    /* Copy the text inside the text field */
+    navigator.clipboard.writeText(copyText.value);
+  }
+</script>
 
 {% endblock content %}
